@@ -1,0 +1,314 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #3a6ea5;
+    --secondary-color: #004e98;
+    --text-color: #333333;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --footer-bg: #2c3e50;
+    --footer-text: #f8f9fa;
+    --border-color: #e9ecef;
+    --accent-color: #6c757d;
+    --hover-color: #004e98;
+}
+
+.dark-theme {
+    --text-color: #e9ecef;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --header-bg: rgba(30, 30, 30, 0.95);
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --footer-bg: #0a0a0a;
+    --footer-text: #e9ecef;
+    --border-color: #2c2c2c;
+    --accent-color: #adb5bd;
+    --hover-color: #4d8fd1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--text-color);
+    position: relative;
+    font-weight: 600;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 15px auto 0;
+    border-radius: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.theme-toggle i {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle i:hover {
+    transform: rotate(15deg);
+    color: var(--primary-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--header-bg);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 6px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo h1 {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.nav-links ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links ul li {
+    margin-left: 25px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links ul li a:hover::after {
+    width: 100%;
+}
+
+.nav-controls {
+    display: flex;
+    align-items: center;
+}
+
+/* IMPORTANT: Hide menu icons by default */
+.fa-bars, .fa-times {
+    display: none;
+    cursor: pointer;
+    font-size: 22px;
+    color: var(--text-color);
+}
+
+/* Rest of your CSS remains the same */
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: url('images/mall-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+}
+
+/* Add all your other CSS here */
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+    }
+    
+    .upcoming-item {
+        flex-direction: column;
+    }
+    
+    .upcoming-item:nth-child(even) {
+        flex-direction: column;
+    }
+    
+    .map-container {
+        margin-bottom: 30px;
+    }
+    
+    .map-container.full-width {
+        padding: 30px 0;
+    }
+    
+    .map-wrapper {
+        width: 90%;
+    }
+}
+
+/* IMPORTANT: Only show menu icons on mobile */
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        background: var(--card-bg);
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        right: -250px;
+        text-align: left;
+        z-index: 1001;
+        transition: 0.4s ease;
+        box-shadow: -5px 0 15px var(--shadow-color);
+        padding-top: 50px;
+    }
+    
+    .nav-links ul {
+        flex-direction: column;
+        padding: 0 30px;
+    }
+    
+    .nav-links ul li {
+        margin: 15px 0;
+    }
+    
+    /* Show hamburger menu only on mobile */
+    .fa-bars {
+        display: block;
+    }
+    
+    .fa-times {
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        margin: 0;
+        font-size: 22px;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links.active .fa-times {
+        display: block;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .map-container.full-width {
+        padding: 20px 0;
+    }
+    
+    .map-wrapper {
+        width: 95%;
+    }
+    
+    .theme-toggle {
+        margin-right: 15px;
+    }
+    
+    .theme-toggle i {
+        font-size: 1.3rem;
+    }
+} 
