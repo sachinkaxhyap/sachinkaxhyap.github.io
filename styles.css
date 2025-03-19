@@ -793,6 +793,17 @@ footer {
         display: block;
     }
     
+    .hero {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 70px;
+    }
+    
+    .hero-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
     .hero-content h1 {
         font-size: 2.5rem;
     }
@@ -837,6 +848,15 @@ footer {
 }
 
 @media (max-width: 576px) {
+    .hero {
+        min-height: 100vh;
+    }
+    
+    .hero-content {
+        padding-top: 70px;
+        padding-bottom: 70px;
+    }
+    
     .hero-content h1 {
         font-size: 2.2rem;
     }

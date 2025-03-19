@@ -11,19 +11,6 @@ function hideMenu() {
     document.body.style.overflow = ""; // Re-enable scrolling
 }
 
-// Close menu when clicking outside
-document.addEventListener('click', function(e) {
-    const navLinks = document.getElementById("navLinks");
-    const hamburger = document.querySelector('.fa-bars');
-    
-    // Check if menu is open and click is outside the menu and not on the hamburger
-    if (navLinks.classList.contains('active') && 
-        !navLinks.contains(e.target) && 
-        e.target !== hamburger) {
-        hideMenu();
-    }
-});
-
 // Sticky Header
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
@@ -48,30 +35,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             if (window.innerWidth < 768) {
                 hideMenu();
             }
-        }
-    });
-});
-
-// Track active section while scrolling
-window.addEventListener('scroll', function() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-links ul li a');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        
-        if (pageYOffset >= (sectionTop - 200)) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
         }
     });
 });
