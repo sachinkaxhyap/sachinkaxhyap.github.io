@@ -4,6 +4,23 @@
 html, body {
     overflow-x: hidden;
     width: 100%;
+    max-width: 100%;
+    position: relative;
+}
+
+/* Fix for horizontal scrolling on mobile */
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    box-sizing: border-box;
+    touch-action: pan-y;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide horizontal scrollbar */
+body::-webkit-scrollbar-horizontal {
+    display: none;
 }
 
 /* Improved header for mobile */
@@ -130,6 +147,23 @@ html, body {
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    }
+    
+    /* Fix viewport on mobile */
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        position: relative;
+    }
+    
+    html {
+        overflow: hidden;
+        height: 100%;
+    }
+    
+    body {
+        height: 100%;
+        overflow: auto;
     }
 }
 
@@ -267,6 +301,14 @@ header.sticky {
 .hero, .about, .why-invest, .operational, .upcoming, .development-gallery, 
 .testimonials, .brands, .gallery, .contact, footer {
     overflow-x: hidden;
+    max-width: 100%;
+}
+
+/* Hide scroll-down arrows on desktop */
+@media (min-width: 769px) {
+    .scroll-down {
+        display: none;
+    }
 }
 
 /* Fix Safari issues */
@@ -284,4 +326,10 @@ header.sticky {
 /* Active state for navigation */
 .nav-links ul li a.active {
     color: var(--primary-color);
+}
+
+/* Force all elements to stay within boundaries */
+* {
+    max-width: 100%;
+    box-sizing: border-box;
 } 
