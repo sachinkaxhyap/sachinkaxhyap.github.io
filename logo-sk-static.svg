@@ -1,0 +1,79 @@
+<svg width="200" height="80" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for the name text -->
+    <linearGradient id="nameGradientStatic" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8fafc;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow filter for brackets -->
+    <filter id="bracketGlowStatic" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+    
+    <!-- Background gradient -->
+    <linearGradient id="bgGradientStatic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Subtle pattern for background -->
+    <pattern id="gridStatic" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(99, 102, 241, 0.05)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="200" height="80" fill="url(#bgGradientStatic)" rx="8"/>
+  <rect width="200" height="80" fill="url(#gridStatic)" rx="8"/>
+  
+  <!-- Static glow background for text area -->
+  <ellipse cx="100" cy="40" rx="80" ry="25" fill="rgba(99, 102, 241, 0.08)" opacity="0.6"/>
+  
+  <!-- Left bracket { -->
+  <text x="45" y="50" 
+        font-family="JetBrains Mono, Consolas, Monaco, monospace" 
+        font-size="28" 
+        font-weight="500" 
+        fill="#6366f1" 
+        filter="url(#bracketGlowStatic)"
+        text-anchor="middle">
+    {
+  </text>
+  
+  <!-- SK text -->
+  <text x="100" y="50" 
+        font-family="JetBrains Mono, Consolas, Monaco, monospace" 
+        font-size="24" 
+        font-weight="500" 
+        fill="url(#nameGradientStatic)" 
+        text-anchor="middle">
+    SK
+  </text>
+  
+  <!-- Right bracket } -->
+  <text x="155" y="50" 
+        font-family="JetBrains Mono, Consolas, Monaco, monospace" 
+        font-size="28" 
+        font-weight="500" 
+        fill="#6366f1" 
+        filter="url(#bracketGlowStatic)"
+        text-anchor="middle">
+    }
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="25" cy="20" r="1.5" fill="#06b6d4" opacity="0.5"/>
+  <circle cx="175" cy="60" r="1" fill="#8b5cf6" opacity="0.4"/>
+  <circle cx="30" cy="65" r="0.8" fill="#10b981" opacity="0.35"/>
+  
+  <!-- Subtle line accents -->
+  <line x1="10" y1="15" x2="40" y2="15" stroke="rgba(99, 102, 241, 0.3)" stroke-width="1" opacity="0.6"/>
+  <line x1="160" y1="65" x2="190" y2="65" stroke="rgba(139, 92, 246, 0.3)" stroke-width="1" opacity="0.6"/>
+</svg> 

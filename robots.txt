@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://sachinkaxhyap.me/sitemap.xml
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block access to sensitive files
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.env
+Disallow: /config/
+
+# Allow access to important resources
+Allow: /assets/
+Allow: /favicon.svg
+Allow: /*.css
+Allow: /*.js
+Allow: /*.svg
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.webp 
