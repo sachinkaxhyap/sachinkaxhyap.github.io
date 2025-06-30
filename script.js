@@ -397,6 +397,15 @@ function initializeContactForm() {
             }
         }
         
+        if (field.type === 'tel' && value) {
+            // Allow various phone number formats
+            const phoneRegex = /^[\+]?[0-9\s\-\(\)]{8,}$/;
+            if (!phoneRegex.test(value)) {
+                showFieldError(field, 'Please enter a valid mobile number');
+                return false;
+            }
+        }
+        
         return true;
     }
     
@@ -430,7 +439,7 @@ function initializeContactForm() {
         }
     }
     
-    // Form submission
+        // Form submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         
@@ -441,7 +450,7 @@ function initializeContactForm() {
                 isValid = false;
             }
         });
-        
+
         if (!isValid) return;
         
         // Show loading state with iOS-style animation
@@ -449,28 +458,54 @@ function initializeContactForm() {
         submitBtn.disabled = true;
         submitBtn.style.transform = 'scale(0.95)';
         
-        // Simulate form submission (replace with actual API call)
+        // Submit to Formspree
         try {
-            await simulateFormSubmission();
+            const formData = new FormData(form);
             
-            // Success animation
-            submitBtn.style.transform = 'scale(1.05)';
-            setTimeout(() => {
-                submitBtn.style.transform = 'scale(1)';
-            }, 150);
-            
-            showNotification('Message sent successfully! I\'ll get back to you soon. 🚀', 'success');
-            form.reset();
-            
-            // Clear all labels
-            inputs.forEach(input => {
-                const label = input.nextElementSibling;
-                if (label && label.tagName === 'LABEL') {
-                    label.style.top = '1rem';
-                    label.style.fontSize = '1rem';
-                    label.style.color = '#94a3b8';
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
                 }
             });
+            
+            if (response.ok) {
+                // Success animation
+                submitBtn.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    submitBtn.style.transform = 'scale(1)';
+                }, 150);
+                
+                showNotification('Message sent successfully! I\'ll get back to you soon. 🚀', 'success');
+                form.reset();
+                
+                // Clear all labels
+                inputs.forEach(input => {
+                    const label = input.nextElementSibling;
+                    if (label && label.tagName === 'LABEL') {
+                        label.style.top = '1rem';
+                        label.style.fontSize = '1rem';
+                        label.style.color = '#94a3b8';
+                    }
+                });
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    showNotification(data.errors.map(error => error.message).join(', '), 'error');
+                } else {
+                    showNotification('Sorry, there was an error sending your message. Please try again. 😔', 'error');
+                }
+                
+                // Error animation
+                submitBtn.style.transform = 'translateX(-5px)';
+                setTimeout(() => {
+                    submitBtn.style.transform = 'translateX(5px)';
+                    setTimeout(() => {
+                        submitBtn.style.transform = 'translateX(0)';
+                    }, 100);
+                }, 100);
+            }
             
         } catch (error) {
             // Error animation
@@ -489,12 +524,6 @@ function initializeContactForm() {
             submitBtn.style.transform = 'scale(1)';
         }
     });
-    
-    async function simulateFormSubmission() {
-        return new Promise((resolve) => {
-            setTimeout(resolve, 2000);
-        });
-    }
     
     function showNotification(message, type) {
         // Remove existing notifications

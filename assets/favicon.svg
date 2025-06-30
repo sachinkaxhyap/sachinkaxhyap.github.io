@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Background -->
+  <rect width="64" height="64" fill="#1e293b" rx="12"/>
+
+  <!-- SK Logo with Brackets -->
+  <text x="18" y="40" 
+        font-family="JetBrains Mono, Consolas, Monaco, monospace" 
+        font-size="16" 
+        font-weight="600" 
+        fill="#6366f1" 
+        text-anchor="middle">
+    {
+  </text>
+
+  <text x="32" y="40" 
+        font-family="JetBrains Mono, Consolas, Monaco, monospace" 
+        font-size="14" 
+        font-weight="600" 
+        fill="#f8fafc" 
+        text-anchor="middle">
+    SK
+  </text>
+
+  <text x="46" y="40" 
+        font-family="JetBrains Mono, Consolas, Monaco, monospace" 
+        font-size="16" 
+        font-weight="600" 
+        fill="#6366f1" 
+        text-anchor="middle">
+    }
+  </text>
+
+  <!-- Dots -->
+  <circle cx="12" cy="12" r="1" fill="#06b6d4" opacity="0.6"/>
+  <circle cx="52" cy="52" r="1" fill="#8b5cf6" opacity="0.6"/>
+</svg>
